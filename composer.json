@@ -1,5 +1,5 @@
 {
-    "name": "leyden212/schoology",
+    "name": "leyden212/laravel-schoology",
     "description": "PHP/Laravel wrapper for the Schoology API",
     "type": "library",
     "keywords": ["laravel", "schoology", "api"],
