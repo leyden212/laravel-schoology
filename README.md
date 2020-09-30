@@ -4,8 +4,8 @@ Wraps the Schoology API for use with PHP and added integration with Laravel. Inc
 
 ## Resources
 
-[Schoology API Docs](https://developers.schoology.com/api)
-[Schoology PHP SDK](https://github.com/schoology/schoology_php_sdk)
+- [Schoology API Docs](https://developers.schoology.com/api)
+- [Schoology PHP SDK](https://github.com/schoology/schoology_php_sdk)
 
 ## Examples
 
