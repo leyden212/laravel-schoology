@@ -1,0 +1,7 @@
+/vendor
+/.idea
+/.vscode
+/.vagrant
+npm-debug.log
+yarn-error.log
+_ide_helper.php
