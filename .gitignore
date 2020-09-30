@@ -5,3 +5,8 @@
 npm-debug.log
 yarn-error.log
 _ide_helper.php
+composer.phar
+composer.lock
+.DS_Store
+.phpunit.result.cache
+/tests/Browser
