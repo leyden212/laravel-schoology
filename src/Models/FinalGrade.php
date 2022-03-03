@@ -1,7 +1,7 @@
 <?php
 namespace Leyden\Schoology\Models;
 
-class Grade extends Model
+class FinalGrade extends Model
 {
     protected $base_path = 'grades';
 
@@ -11,6 +11,6 @@ class Grade extends Model
 
     protected $guarded = [];
 
-    protected $altResourceName = 'grades.grade';
+// protected $altResourceName = 'grades.final_grade';
 
 }

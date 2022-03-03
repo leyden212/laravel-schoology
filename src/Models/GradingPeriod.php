@@ -1,16 +1,13 @@
 <?php
 namespace Leyden\Schoology\Models;
 
-class Grade extends Model
+class GradingPeriod extends Model
 {
-    protected $base_path = 'grades';
+    protected $base_path = 'grading_periods';
 
     protected $is_nestable = true;
 
     protected $connection = \Leyden\Schoology\Resources\ListViewResource::class;
 
     protected $guarded = [];
-
-    protected $altResourceName = 'grades.grade';
-
 }
