@@ -76,6 +76,13 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
     public $incrementing = true;
 
     /**
+     * Indicates if the model exists.
+     *
+     * @var bool
+     */
+    public $exists = false;
+
+    /**
      * Alternate collection name returned by API if not the Model Name.
      *
      * @var string
@@ -135,7 +142,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      */
     protected static function booting()
     {
-    //
+        //
     }
 
     /**
@@ -188,7 +195,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
     protected function initializeTraits()
     {
         foreach (static::$traitInitializers[static::class] as $method) {
-            $this->{ $method}();
+            $this->{$method}();
         }
     }
 
@@ -199,7 +206,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      */
     protected static function booted()
     {
-    //
+        //
     }
 
     /**
@@ -303,12 +310,12 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
 
     public static function find($id)
     {
-        return (new static )->resource()->find($id);
+        return (new static)->resource()->find($id);
     }
 
     public static function findExt($id)
     {
-        return (new static )->resource()->findExt($id);
+        return (new static)->resource()->findExt($id);
     }
 
     public function get()
@@ -318,18 +325,18 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
 
     public static function all()
     {
-        return (new static )->resource()->all();
+        return (new static)->resource()->all();
     }
 
     public static function where($field, $value)
     {
-        return (new static )->resource()
+        return (new static)->resource()
             ->where($field, $value);
     }
 
     public static function paginate($start, $count)
     {
-        return (new static )->resource()
+        return (new static)->resource()
             ->paginate($start, $count);
     }
 
@@ -357,11 +364,11 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
             // the model, and all others will just get ignored for security reasons.
             if ($this->isFillable($key)) {
                 $this->setAttribute($key, $value);
-            }
-            elseif ($totallyGuarded) {
+            } elseif ($totallyGuarded) {
                 throw new \Illuminate\Database\Eloquent\MassAssignmentException(sprintf(
                     'Add [%s] to fillable property to allow mass assignment on [%s].',
-                    $key, get_class($this)
+                    $key,
+                    get_class($this)
                 ));
             }
         }
@@ -442,10 +449,9 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
     /**
      * Convert the object into something JSON serializable.
      *
-     * @return array
+     * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
@@ -457,9 +463,9 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
-        return ! is_null($this->getAttribute($offset));
+        return !is_null($this->getAttribute($offset));
     }
 
     /**
@@ -469,7 +475,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->getAttribute($offset);
     }
@@ -482,7 +488,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->setAttribute($offset, $value);
     }
@@ -494,7 +500,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->attributes[$offset], $this->relations[$offset]);
     }
@@ -550,7 +556,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      */
     public static function __callStatic($method, $parameters)
     {
-        return (new static )->$method(...$parameters);
+        return (new static)->$method(...$parameters);
     }
 
     /**
@@ -577,5 +583,4 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
 
         return $this;
     }
-
 }
