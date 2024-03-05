@@ -5,9 +5,9 @@
     "keywords": ["laravel", "schoology", "api"],
     "require": {
         "php": ">=8",
-        "illuminate/database": "^6|^7|^8|^9|^10",
-        "illuminate/http": "^6|^7|^8|^9|^10",
-        "illuminate/support": "^6|^7|^8|^9|^10"
+        "illuminate/database": "^6|^7|^8|^9|^10|^11",
+        "illuminate/http": "^6|^7|^8|^9|^10|^11",
+        "illuminate/support": "^6|^7|^8|^9|^10|^11"
     },
     "license": "MIT",
     "authors": [
